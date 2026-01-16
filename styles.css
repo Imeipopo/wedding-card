@@ -95,6 +95,42 @@ body.opened .invitation { opacity:1; transform:none; }
   .slide-prev, .slide-next{ font-size:1.8rem }
 }
 
+/* Mobile first / Small screens adjustments */
+@media (max-width:700px){
+  body { font-size:16px; }
+  .env-wrap { top:8%; left:50%; transform:translateX(-50%); }
+  .envelope { width:200px; }
+  .cover-inner { padding-top:6.2rem; }
+  .names { font-size:1.6rem; }
+  .open-btn { padding:.6rem .9rem; font-size:.95rem; }
+
+  /* Invitation 佈局改為流式寬度 */
+  .invitation { width:96%; padding:2rem 1rem; margin-top:1rem; }
+  .invitation[aria-hidden="true"] { pointer-events:none; }
+  .details, .rsvp { padding:1rem; }
+
+  /* Timeline: 直式卡片堆疊，橫向媒體改為上方圖片 */
+  .timeline-inner{ width:94%; height:84%; }
+  .t-item{ flex-direction:column; align-items:flex-start; padding:1.2rem; min-height:180px; }
+  .t-media{ width:100%; height:140px; min-width:0; margin-bottom:.8rem; }
+  .t-text h3{ font-size:1.2rem }
+  .timeline-hint{ display:none }
+
+  /* Slideshow: 更高的視覺占比，移除側邊箭頭，改為底部點與左右滑動 */
+  .slides{ width:96%; height:62vh; }
+  .slide-content{ padding:1.2rem; }
+  .slide h3{ font-size:1.4rem }
+  .slide-prev, .slide-next{ display:none }
+  .slide-dots{ bottom:3%; }
+
+  /* RSVP form inputs 更易點擊 */
+  input[type="text"], input[type="number"], select { padding:.7rem .8rem; font-size:1rem; }
+  form button, .confirm-btn { width:100%; padding:.8rem; font-size:1rem; }
+
+  /* Timeline 内滚动时快一点的触摸优化 */
+  .timeline-inner{ -webkit-overflow-scrolling:touch; }
+}
+
 /* 時間軸樣式 */
 .timeline{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:55; background:linear-gradient(180deg, rgba(255,250,248,0.98), rgba(255,250,248,0.98)); opacity:0; pointer-events:none; transition:opacity .3s ease; }
 .timeline[aria-hidden="false"]{ opacity:1; pointer-events:auto; }
