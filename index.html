@@ -1,115 +1,179 @@
-<!doctype html>
-<html lang="zh-Hant">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>婚禮請帖</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宗翰與若慈婚禮 2026</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="stage">
-      <div class="cover" role="button" aria-label="開啟請帖">
-        <div class="env-wrap" aria-hidden="true">
-          <svg class="envelope" width="260" height="160" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1">
-                <stop offset="0" stop-color="#fff5f8" />
-                <stop offset="1" stop-color="#f7eef2" />
-              </linearGradient>
-            </defs>
-            <rect x="8" y="30" width="244" height="110" rx="10" fill="url(#g1)" stroke="#e7d3db" />
-            <polygon class="flap" points="10,32 130,92 250,32" fill="#fef7f9" stroke="#e7d3db" />
-            <g class="flowers" transform="translate(20,10)">
-              <circle class="petal p1" cx="10" cy="20" r="6" fill="#f3c1d9" />
-              <circle class="petal p2" cx="28" cy="8" r="4" fill="#f6e0f0" />
-              <circle class="petal p3" cx="44" cy="24" r="5" fill="#e9b6d0" />
-            </g>
-          </svg>
-        </div>
-        <div class="cover-inner">
-          <h1 class="names">小明 &amp; 小華</h1>
-          <p class="date">2026 年 6 月 6 日</p>
-          <button id="openBtn" class="open-btn">開啟請帖</button>
-        </div>
-      </div>
-
-      <!-- 人生軌跡時間軸（垂直滑動）--> 
-      <div class="timeline" aria-hidden="true">
-        <div class="timeline-inner">
-          <div class="t-item t-1">
-            <div class="t-media"></div>
-            <div class="t-text"><h3>相遇</h3><p>第一次在咖啡廳相遇的溫暖瞬間。</p></div>
-          </div>
-          <div class="t-item t-2">
-            <div class="t-media"></div>
-            <div class="t-text"><h3>交往</h3><p>一起旅行、一起做飯、逐漸成為彼此的家人。</p></div>
-          </div>
-          <div class="t-item t-3">
-            <div class="t-media"></div>
-            <div class="t-text"><h3>訂婚 / 婚紗</h3><p>記錄我們的婚紗時刻，準備攜手向前。</p></div>
-          </div>
-          <div class="t-item t-final">
-            <div class="t-media"></div>
-            <div class="t-text"><h3>下一步</h3><p>滑到最後或按下「前往幻燈片」查看婚禮資訊。</p><button id="toSlideshow" class="confirm-btn">前往幻燈片</button></div>
-          </div>
-        </div>
-        <div class="timeline-hint">向下滑動觀看人生軌跡</div>
-      </div>
-
-      <!-- 幻燈片覆蓋層：隱藏，時間軸後顯示 -->
-      <div class="slideshow" aria-hidden="true">
-        <div class="slides">
-          <div class="slide slide-1" data-title="婚禮地點">
-            <div class="slide-content"><h3>婚禮地點</h3><p>台北某某大飯店 - 主廳 17:00</p></div>
-          </div>
-          <div class="slide slide-2" data-title="停車資訊">
-            <div class="slide-content"><h3>停車資訊</h3><p>飯店地下停車場、路邊停車場 (示意圖)</p></div>
-          </div>
-          <div class="slide slide-3" data-title="全蔬食">
-            <div class="slide-content"><h3>全蔬食婚宴</h3><p>本次婚宴為全蔬食，敬請安心享用。</p></div>
-          </div>
-          <div class="slide slide-4" data-title="誠摯邀請">
-            <div class="slide-content"><h3>最誠摯的邀請</h3><p>期待與您一同見證我們的重要時刻。</p></div>
-          </div>
-          <div class="slide slide-final" data-type="final">
-            <div class="slide-content">
-              <h3>準備好了嗎？</h3>
-              <p>滑到最後即為本段結束，接下來會回到請帖頁面輸入您的姓名、人數與是否出席。</p>
+</head>
+<body>
+    <!-- 第一層：信封頁面 -->
+    <div class="layer layer-1 active">
+        <div class="envelope-container">
+            <div class="title-text">宗翰與若慈婚禮<br>2026.10.25</div>
+            
+            <!-- 信封 -->
+            <div class="envelope" id="envelope">
+                <div class="envelope-front">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body"></div>
+                </div>
             </div>
-          </div>
+
+            <!-- 飛舞的愛心 -->
+            <div class="hearts-container">
+                <div class="heart heart-1">❤️</div>
+                <div class="heart heart-2">❤️</div>
+                <div class="heart heart-3">❤️</div>
+                <div class="heart heart-4">❤️</div>
+                <div class="heart heart-5">❤️</div>
+            </div>
         </div>
-        <button class="slide-prev" aria-label="上一張">‹</button>
-        <button class="slide-next" aria-label="下一張">›</button>
-        <div class="slide-dots" aria-hidden="true"></div>
-      </div>
+    </div>
 
-      <main class="invitation" aria-hidden="true">
-        <section class="hero">
-          <h2>我們結婚了</h2>
-          <p class="lead">誠摯邀請您見證我們的喜悅</p>
-        </section>
+    <!-- 第二層：故事線頁面 -->
+    <div class="layer layer-2">
+        <div class="story-container">
+            <h1 class="story-title">我們的故事</h1>
+            
+            <!-- 相識 -->
+            <div class="story-section">
+                <div class="section-image">
+                    <div class="placeholder-image">📸 相識的照片</div>
+                </div>
+                <div class="section-content">
+                    <h2>相識</h2>
+                    <p>一次偶然的機會，我們相遇了。那一刻，一切都變得不同。在那個特別的時刻，我們開始了一段新的故事。</p>
+                </div>
+            </div>
 
-        <section class="details">
-          <h3>婚宴資訊</h3>
-          <p>時間：2026-06-06 下午 17:00</p>
-          <p>地點：台北某某大飯店</p>
-        </section>
+            <!-- 交往 -->
+            <div class="story-section">
+                <div class="section-content">
+                    <h2>交往</h2>
+                    <p>一起走過許多回憶，分享彼此的夢想與希望。每一個時刻都閃閃發光，每一個擁抱都溫暖無比。在彼此陪伴下，我們變得更加堅強。</p>
+                </div>
+                <div class="section-image">
+                    <div class="placeholder-image">📸 交往的回憶</div>
+                </div>
+            </div>
 
-        <section class="rsvp">
-          <h3>回覆邀請 (RSVP)</h3>
-          <form id="rsvpForm">
-            <label>姓名 <input type="text" name="name" required></label>
-            <label>人數 (包含您) <input type="number" name="guests" min="0" value="1" required></label>
-            <label>是否參加 <select name="attend"><option value="yes">會</option><option value="no">無法參加</option></select></label>
-            <button type="submit">送出回覆</button>
-          </form>
-          <p id="rsvpMsg" class="msg" aria-live="polite"></p>
-        </section>
-      </main>
+            <!-- 結婚 -->
+            <div class="story-section">
+                <div class="section-image">
+                    <div class="placeholder-image">📸 婚禮照片</div>
+                </div>
+                <div class="section-content">
+                    <h2>步入婚姻</h2>
+                    <p>決定一起走入婚姻，承諾永遠陪伴在彼此身邊。這不只是一場婚禮，而是兩個人承諾一起創造更美好的未來。</p>
+                </div>
+            </div>
+
+            <!-- 邀請文字 -->
+            <div class="invitation-section">
+                <h2>誠摯邀請</h2>
+                <p>親愛的您，誠摯邀請您與我們分享這個特別的日子，見證我們的幸福時刻。您的祝福與陪伴對我們來說是最珍貴的禮物。</p>
+                <button class="rsvp-button" id="rsvp-btn">填寫表單</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 過場動畫：手寫筆記 -->
+    <div class="transition-layer" id="transition-writing">
+        <div class="writing-animation">
+            <div class="notebook">
+                <h3>感謝您的出席</h3>
+            </div>
+            <div class="hand-writing">✍️</div>
+        </div>
+    </div>
+
+    <!-- 第三層：感謝頁面 -->
+    <div class="layer layer-3">
+        <div class="thank-you-container">
+            <h1>感謝您的蒞臨</h1>
+            <p class="subtitle">與我們分享這特別的時刻</p>
+            
+            <!-- 宴客資訊 -->
+            <div class="event-info-section">
+                <div class="info-card">
+                    <h3>📍 宴客資訊</h3>
+                    <div class="info-detail">
+                        <p><strong>地點：</strong>台北市信義區 XX 飯店</p>
+                        <p><strong>日期：</strong>2026 年 10 月 25 日 (星期日)</p>
+                        <p><strong>時間：</strong>下午 5:30 - 晚上 10:00</p>
+                    </div>
+                </div>
+
+                <!-- 地圖 -->
+                <div class="map-card">
+                    <h3>🗺️ 位置地圖</h3>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <p>台北市信義區</p>
+                            <p>飯店地址地圖</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 停車資訊 -->
+                <div class="parking-card">
+                    <h3>🅿️ 停車位置</h3>
+                    <div class="parking-detail">
+                        <p>✓ 飯店地下一至三樓設有停車場</p>
+                        <p>✓ 敬請洽詢現場工作人員</p>
+                        <p>✓ 停車費用由飯店吸收</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 表單區域 -->
+            <div class="form-section">
+                <h2>出席確認</h2>
+                <form id="rsvp-form" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="name">姓名 <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="請輸入您的姓名">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guests">出席人數 <span class="required">*</span></label>
+                        <select id="guests" name="guests" required>
+                            <option value="">請選擇人數</option>
+                            <option value="1">1 人</option>
+                            <option value="2">2 人</option>
+                            <option value="3">3 人</option>
+                            <option value="4">4 人</option>
+                            <option value="5">5 人</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>是否出席 <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attend" value="yes" required>
+                                <span>確定出席</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attend" value="no" required>
+                                <span>無法出席</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">備註</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="如有任何特殊需求或問題（例如：飲食禁忌、出行方式等）"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">提交表單</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
